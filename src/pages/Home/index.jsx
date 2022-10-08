@@ -13,13 +13,13 @@ export function Home() {
         <div className="flex flex-col md:flex-1 space-y-6">
           <h1 className="text-3xl text-center md:text-left font-bold">Dê o seu palpite na Copa do Mundo do Catar 2022!</h1>
 
-          <button className="text-red-700 bg-white text-xl px-8 py-4 rounded-xl">
+          <a href="/signup" className="text-center text-red-700 bg-white text-xl px-8 py-4 rounded-xl">
             Criar minha conta
-          </button>
+          </a>
 
-          <button className="text-white border borde-white text-xl px-8 py-4 rounded-xl">
-            Criar minha conta
-          </button>
+          <a href="login" className="text-center text-white border borde-white text-xl px-8 py-4 rounded-xl">
+            Fazer Login
+          </a>
         </div>
       </div>
     </div>
