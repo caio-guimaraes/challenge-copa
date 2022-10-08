@@ -1,0 +1,1 @@
+# Projeto Full Stack Challenge - Edição Copa do Mundo
