@@ -6,6 +6,7 @@ import {
 
 import { Home } from './Home'
 import { Login } from './Login'
+import { SignUp } from './SignUp'
 
 const router = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/signup",
-        element: <div>Cadastro</div>,
+        element: <SignUp />,
     }
 ]);
 
