@@ -66,7 +66,7 @@ export const SignUp = () => {
                         error={formik.touched.password && formik.errors.password}
                     />
 
-                    <button type='submit' disabled={!formik.isValid}
+                    <button type='submit' disabled={!formik.isValid || formik.isSubmitting}
                         className="block w-full text-center text-white bg-red-500 px-6 py-3 rounded-xl disabled:opacity-50" 
                     >
                         Criar minha conta
