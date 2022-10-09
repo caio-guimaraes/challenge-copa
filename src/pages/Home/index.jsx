@@ -2,8 +2,8 @@ import { Navigate } from 'react-router-dom'
 import { useLocalStorage } from 'react-use'
 
 export function Home() {
-  const [auth, setAuth] = useLocalStorage('auth', {})
-  
+  const [auth] = useLocalStorage('auth', {})
+
   if (auth?.user?.id) {
     return <Navigate to="/dashboard" replace={true} />
   }
