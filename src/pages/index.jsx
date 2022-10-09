@@ -1,3 +1,4 @@
+import { useLocalStorage } from 'react-use'
 import {
     createBrowserRouter,
     RouterProvider,
@@ -34,5 +35,7 @@ const router = createBrowserRouter([
 ]);
 
 export const Router = () => {
+    const [auth] = useLocalStorage('auth')
+    console.log('auth', auth)
     return <RouterProvider router={ router } />
 }

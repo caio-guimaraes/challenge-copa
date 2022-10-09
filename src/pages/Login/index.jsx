@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
+import { useLocalStorage } from 'react-use'
 
 import { Icon, Input } from '@/components'
-
 
 const validationSchema = yup.object().shape({
     email: yup.string().email('Informe um e-mail válido').required('Informe seu e-mail'),
@@ -11,6 +11,8 @@ const validationSchema = yup.object().shape({
 })
 
 export const Login = () => {
+    const [auth, setAuth] = useLocalStorage('auth', {})
+
     const formik = useFormik({
         onSubmit: async (values) => {
             console.log(values)
@@ -24,7 +26,7 @@ export const Login = () => {
                 }
             })
 
-            console.log(res.data)
+            setAuth(res.data)
         },
         initialValues: {
             email: '',
@@ -62,7 +64,7 @@ export const Login = () => {
                     <button type='submit' disabled={!formik.isValid || formik.isSubmitting}
                         className="block w-full text-center text-white bg-red-500 px-6 py-3 rounded-xl disabled:opacity-50"
                     >
-                        Entrar
+                        { formik.isSubmitting ? 'Carrengando...' : 'Entrar'}
                     </button>
                 </form>
             </main>
