@@ -23,9 +23,9 @@ export const SignUp = () => {
                     <Input type="text" name="email" label="Seu e-mail" placeholder="Digite seu e-mail" />
                     <Input type="password" name="password" label="Sua senha" placeholder="Digite sua senha" />
 
-                    <button className="w-full text-center text-white bg-red-500 px-6 py-3 rounded-xl">
+                    <a href='/dashboard' className="block w-full text-center text-white bg-red-500 px-6 py-3 rounded-xl">
                         Criar minha conta
-                    </button>
+                    </a>
                 </form>
             </main>
         </div>
