@@ -1,4 +1,32 @@
+import { useState } from 'react'
+import { addDays, subDays, format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+
 import { Icon, Card } from '@/components'
+
+const initialDate = '2022-11-20T00:00:00Z'
+
+const DateSelect = () => {
+    const [currentDate, setCurrentDate] = useState(new Date(initialDate))
+
+    const prevDay = () => {
+        const prevDate = subDays(currentDate, 1)
+        setCurrentDate(prevDate)
+    }
+
+    const nextDay = () => {
+        const nextDate = addDays(currentDate, 1)
+        setCurrentDate(nextDate)
+    }
+
+    return (
+        <div className='p-4 flex space-x-4 items-center justify-center'>
+            <Icon name="arrowLeft" className="w-6 text-red-500" onClick={ prevDay } />
+            <span className='font-bold'>{ format(currentDate, "d 'de' MMMM", { locale: ptBR}) }</span>
+            <Icon name="arrowRight" className="w-6 text-red-500" onClick={nextDay} />
+        </div>
+    )
+}
 
 export const Profile = () => (
     <>
@@ -21,11 +49,7 @@ export const Profile = () => (
             <section id="content" className="container max-w-3xl p-4 space-y-4">
                 <h2 className="text-red-500 text-xl font-bold">Seus palpites</h2>
 
-                <div className='p-4 flex space-x-4 items-center justify-center'>
-                    <Icon name="arrowLeft" className="w-6 text-red-500" />
-                    <span className='font-bold'>24 de Novembro</span>
-                    <Icon name="arrowRight" className="w-6 text-red-500" />
-                </div>
+                <DateSelect />
 
                 <div className="space-y-4">
                     <Card timeA={{ slug: 'sui'}} timeB={{ slug: 'cam'}} match={{ time: '7:00' }}/>
