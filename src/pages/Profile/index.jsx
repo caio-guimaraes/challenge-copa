@@ -39,9 +39,9 @@ export const Profile = () => {
                     <DateSelect />
 
                     <div className="space-y-4">
-                        <Card timeA={{ slug: 'sui'}} timeB={{ slug: 'cam'}} match={{ time: '7:00' }}/>
-                        <Card timeA={{ slug: 'uru'}} timeB={{ slug: 'cor'}} match={{ time: '7:00' }}/>
-                        <Card timeA={{ slug: 'por'}} timeB={{ slug: 'gan'}} match={{ time: '7:00' }}/>
+                        <Card homeTeam={{ slug: 'sui'}} awayTeam={{ slug: 'cam'}} match={{ time: '7:00' }}/>
+                        <Card homeTeam={{ slug: 'uru'}} awayTeam={{ slug: 'cor'}} match={{ time: '7:00' }}/>
+                        <Card homeTeam={{ slug: 'por'}} awayTeam={{ slug: 'gan'}} match={{ time: '7:00' }}/>
                     </div>
                 </section>
             </main>

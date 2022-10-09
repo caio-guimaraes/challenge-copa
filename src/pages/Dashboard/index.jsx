@@ -1,11 +1,22 @@
 import { Navigate } from 'react-router-dom'
-import { useLocalStorage } from 'react-use'
+import { useLocalStorage, useAsync } from 'react-use'
+import { format } from 'date-fns'
+import axios from 'axios'
 
 import { Fragment } from 'react'
 import { Icon, Card, DateSelect } from '@/components'
 
 export const Dashboard = () => {
     const [auth] = useLocalStorage('auth', {})
+    const state = useAsync(async () => {
+        const res = await axios({
+            method: 'get',
+            baseURL: 'http://localhost:3000',
+            url: '/games'
+        })
+
+        return res.data
+    })
 
     if (!auth?.user?.id) {
         return <Navigate to="/" replace={true} />
@@ -34,9 +45,16 @@ export const Dashboard = () => {
                     <DateSelect />
                     
                     <div className="space-y-4">
-                        <Card timeA={{ slug: 'sui'}} timeB={{ slug: 'cam'}} match={{ time: '7:00' }}/>
-                        <Card timeA={{ slug: 'uru'}} timeB={{ slug: 'cor'}} match={{ time: '7:00' }}/>
-                        <Card timeA={{ slug: 'por'}} timeB={{ slug: 'gan'}} match={{ time: '7:00' }}/>
+                        { state.loading && 'Carregando jogos...' }
+                        { state.error && 'Ops! Algo deu errado.' }
+
+                        { !state.loading && !state.error && state.value.map(game => (
+                            <Card 
+                            homeTeam={{ slug: game.homeTeam }} 
+                            awayTeam={{ slug: game.awayTeam }} 
+                            match={{ time: format(new Date(game.gameTime), 'H:mm') }}
+                        />
+                        ))}
                     </div>
                 </section>
             </main>
