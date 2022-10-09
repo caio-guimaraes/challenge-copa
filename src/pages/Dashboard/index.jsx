@@ -1,7 +1,8 @@
+import { Fragment } from 'react'
 import { Icon, Card } from '@/components'
 
 export const Dashboard = () => (
-    <div className="">
+    <Fragment>
         <header className="bg-red-500 text-white p-4">
             <div className="container max-w-3xl flex justify-between">
                 <img src="/imgs/logo-fundo-vermelho.svg" alt="" className="w-28 md:w-40" />
@@ -33,5 +34,5 @@ export const Dashboard = () => (
                 </div>
             </section>
         </main>
-    </div>
+    </Fragment>
 )

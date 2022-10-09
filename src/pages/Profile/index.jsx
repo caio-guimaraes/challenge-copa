@@ -1,7 +1,7 @@
 import { Icon, Card } from '@/components'
 
 export const Profile = () => (
-    <div className="">
+    <>
         <header className="bg-red-500 text-white p-4">
             <div className="container max-w-3xl flex justify-between">
                 <img src="/imgs/logo-fundo-vermelho.svg" alt="" className="w-28 md:w-40" />
@@ -34,5 +34,5 @@ export const Profile = () => (
                 </div>
             </section>
         </main>
-    </div>
+    </>
 )
