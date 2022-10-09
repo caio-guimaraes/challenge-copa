@@ -13,8 +13,15 @@ const validationSchema = yup.object().shape({
 
 export const SignUp = () => {
     const formik = useFormik({
-        onSubmit: (values) => {
-            
+        onSubmit: async (values) => {
+            const res = await axios({
+                method: 'post',
+                baseURL: 'http://localhost:3000',
+                url: '/users',
+                data: values
+            })
+
+            console.log(res.data)
         },
         initialValues: {
             name: '',
@@ -24,8 +31,6 @@ export const SignUp = () => {
         },
         validationSchema
     })
-
-    console.log(formik.errors)
     
     return (
         <div className="">
@@ -46,23 +51,24 @@ export const SignUp = () => {
                 <form className="p-4 space-y-6" onSubmit={formik.handleSubmit}>
                     <Input type="text" name="name" label="Seu nome" placeholder="Digite seu nome" 
                         value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur}
-                        error={formik.errors.name}
+                        error={formik.touched.name && formik.errors.name}
                     />
                     <Input type="text" name="username" label="Seu nome de usuário" placeholder="Digite um nome de usuário" 
                         value={formik.values.username} onChange={formik.handleChange} onBlur={formik.handleBlur}
-                        error={formik.errors.username}
+                        error={formik.touched.username && formik.errors.username}
                     />
                     <Input type="text" name="email" label="Seu e-mail" placeholder="Digite seu e-mail" 
                         value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur}
-                        error={formik.errors.email}
+                        error={formik.touched.email && formik.errors.email}
                     />
                     <Input type="password" name="password" label="Sua senha" placeholder="Digite sua senha" 
                         value={formik.values.password} onChange={formik.handleChange} onBlur={formik.handleBlur}
-                        error={formik.errors.password}
+                        error={formik.touched.password && formik.errors.password}
                     />
-                    error={formik.errors.name}
 
-                    <button type='submit' className="block w-full text-center text-white bg-red-500 px-6 py-3 rounded-xl">
+                    <button type='submit' disabled={!formik.isValid}
+                        className="block w-full text-center text-white bg-red-500 px-6 py-3 rounded-xl disabled:opacity-50" 
+                    >
                         Criar minha conta
                     </button>
                 </form>
