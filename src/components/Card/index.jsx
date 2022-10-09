@@ -13,8 +13,7 @@ export const Card = ({ gameId, homeTeam, awayTeam , gameTime}) => {
 
     const formik = useFormik({
         onSubmit: async (values) => {
-            console.log(values)
-            const res = await axios({
+            axios({
                 method: 'post',
                 baseURL: 'http://localhost:3000',
                 url: '/hunches',

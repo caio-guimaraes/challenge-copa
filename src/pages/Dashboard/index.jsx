@@ -56,7 +56,8 @@ export const Dashboard = () => {
                         { state.error && 'Ops! Algo deu errado.' }
 
                         { !state.loading && !state.error && state.value?.map(game => (
-                            <Card 
+                            <Card
+                                key={game.id}
                                 gameId={game.id}
                                 homeTeam={game.homeTeam} 
                                 awayTeam={game.awayTeam} 

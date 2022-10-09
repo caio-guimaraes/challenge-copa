@@ -16,7 +16,6 @@ export const Login = () => {
 
     const formik = useFormik({
         onSubmit: async (values) => {
-            console.log(values)
             const res = await axios({
                 method: 'get',
                 baseURL: 'http://localhost:3000',
