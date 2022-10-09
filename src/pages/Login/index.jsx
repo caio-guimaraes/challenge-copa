@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useFormik } from 'formik'
 import * as yup from 'yup'
 import { useLocalStorage } from 'react-use'
+import { Navigate } from 'react-router-dom'
 
 import { Icon, Input } from '@/components'
 
@@ -34,6 +35,10 @@ export const Login = () => {
         },
         validationSchema
     })
+
+    if (auth?.user?.id) {
+        return <Navigate to="/dashboard" replace={true} />
+    }
 
     return (
         <div className="">
