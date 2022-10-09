@@ -1,4 +1,4 @@
-import { Icon } from '@/components'
+import { Icon, Card } from '@/components'
 
 export const Dashboard = () => (
     <div className="">
@@ -19,8 +19,10 @@ export const Dashboard = () => (
                 </div>
             </section>
 
-            <section id="content">
-
+            <section id="content" className="container max-w-3xl p-4 space-y-4">
+                <Card timeA={{ slug: 'sui'}} timeB={{ slug: 'cam'}} match={{ time: '7:00' }}/>
+                <Card timeA={{ slug: 'uru'}} timeB={{ slug: 'kor'}} match={{ time: '7:00' }}/>
+                <Card timeA={{ slug: 'por'}} timeB={{ slug: 'gan'}} match={{ time: '7:00' }}/>
             </section>
         </main>
     </div>
