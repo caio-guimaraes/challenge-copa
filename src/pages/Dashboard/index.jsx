@@ -20,9 +20,16 @@ export const Dashboard = () => (
             </section>
 
             <section id="content" className="container max-w-3xl p-4 space-y-4">
-                <Card timeA={{ slug: 'sui'}} timeB={{ slug: 'cam'}} match={{ time: '7:00' }}/>
-                <Card timeA={{ slug: 'uru'}} timeB={{ slug: 'kor'}} match={{ time: '7:00' }}/>
-                <Card timeA={{ slug: 'por'}} timeB={{ slug: 'gan'}} match={{ time: '7:00' }}/>
+                <div className='p-4 flex space-x-4 items-center justify-center'>
+                    <Icon name="arrowLeft" className="w-6 text-red-500" />
+                    <span className='font-bold'>24 de Novembro</span>
+                    <Icon name="arrowRight" className="w-6 text-red-500" />
+                </div>
+                <div className="space-y-4">
+                    <Card timeA={{ slug: 'sui'}} timeB={{ slug: 'cam'}} match={{ time: '7:00' }}/>
+                    <Card timeA={{ slug: 'uru'}} timeB={{ slug: 'cor'}} match={{ time: '7:00' }}/>
+                    <Card timeA={{ slug: 'por'}} timeB={{ slug: 'gan'}} match={{ time: '7:00' }}/>
+                </div>
             </section>
         </main>
     </div>
